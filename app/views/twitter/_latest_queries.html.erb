@@ -1,0 +1,55 @@
+<ul class="query">
+	<% if not @queries.empty? %>
+	<% @queries.each do |qry| %>
+			<li onclick="<%= remote_function(
+				:url => { :action => 'search' },
+				:with => "
+					'query[from_user]="	+ (qry.from_user.nil? ? '' : qry.from_user) +
+					"&query[lang]="		+ (qry.lang.nil? ? '' : qry.lang) +
+					"&query[q]="		+ (qry.q.nil? ? '' : qry.q) +
+					"&query[rpp]="		+ (qry.rpp.nil? ? '' : qry.rpp.to_s) +
+					"&query[since]="	+ (qry.since.nil? ? '' : qry.since.strftime) +
+					"&from_search=latest'",
+				:create => "$('spinner').show();",
+				:complete => "$('spinner').hide();"
+				) %>"
+				onmouseover="this.getElementsByClassName('srch_latest')[0].show();"
+				onmouseout="this.getElementsByClassName('srch_latest')[0].hide();">
+				<% if not (qry.from_user.nil? or qry.from_user.empty?) %>
+					<span>
+						<b>from</b>
+						<%= qry.from_user %>
+						<b class="srch_latest" style="display: none;">srch!</b>
+					</span>
+				<% end %>
+
+				<% if not (qry.q.nil? or qry.q.empty?) %>
+					<span>
+						<b>text</b>
+						<%= qry.q %>
+						<% if (qry.from_user.nil? or qry.from_user.empty?) %>
+							<b class="srch_latest" style="display: none;">srch!</b>
+						<% end %>
+					</span>
+				<% end %>
+
+				<% if not (qry.lang.nil? or qry.lang.empty?) %>
+					<span><b>lang</b><%= qry.lang %></span>
+				<% end %>
+				
+				<% if not (qry.rpp.nil?) %>
+					<span><b>max</b><%= qry.rpp.to_s %></span>
+				<% end %>
+				
+				<% if not (qry.since.nil?) %>
+					<span><b>since</b><%= qry.since %></span>
+				<% end %>
+			</li>
+	<% end %>
+		<li></li>
+	<% else %>
+	<div class="notice">
+		<strong>No queries!</strong>
+	</div>
+	<% end %>
+</ul>

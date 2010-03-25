@@ -1,0 +1,9 @@
+<div id="error_partial" class="error">
+	<% if (not (params[:from_search].nil? or params[:from_search].empty?)) and params[:from_search].include?("simple") %>
+		<strong>you must type some text!</strong>
+	<% else %>
+		<% flash.now[:error].each do |msg| %>
+			<strong><%= msg %></strong><br /><br />
+		<% end %>
+	<% end %>
+</div>

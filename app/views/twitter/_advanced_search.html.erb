@@ -1,0 +1,68 @@
+<% remote_form_for @query, :url => { :action => 'search' },
+	:create => "$('spinner').show();",
+	:complete => "$('spinner').hide();" do |f| %>
+
+	<% if f.error_messages %>
+	<div>
+		<strong><%= f.error_messages %></strong>
+	</div>
+	<% end %>
+
+	<div>
+		<%= f.label :from_user, "from" %>
+		<%= f.text_field :from_user, { :class => 'text_field l_round r_round' } %>
+		<%= link_to_remote 'simple',
+		 	{
+				:update => 'search',
+				:url => { :action => 'simple_search' },
+				:success => "$('error_partial').remove();"
+			},
+			{
+				:class => 'link l_round r_round mode_link'
+			} %>
+	</div>
+	<div>
+		<%= f.label :lang, "language" %>
+		<%# f.text_field :lang, { :class => 'text_field l_round r_round' } %>
+		<%= f.select :lang, [['--Select--', ''], ['english', 'en'], ['español', 'es'], ['français', 'fr'], ['italiano', 'it'], ['português', 'pt']], {}, { :class => 'l_round r_round' } %>
+		<div style="clear: both;"></div>
+	</div>
+	<div>
+		<%= f.label :q, "text" %>
+		<%= f.text_field :q, { :class => 'text_field l_round left' } %>
+		
+		<%= hidden_field_tag 'from_search', 'advanced' %>
+		<%= f.submit 'srch!', { :class => 'button r_round left' } %>
+		<div id="spinner" style="display: none;">
+			<img width="32" height="32" alt="Spinner" src="/images/ajax-loader.gif">
+		</div>
+		
+		<div style="clear: both;"></div>
+		
+		<%# link_to_remote 'srch!',
+		 	{
+				:update => 'results',
+				:url => { :action => 'search' },
+				:with => "
+					'query[from_user]='		+ $('query_from_user').value +
+					'&query[lang]='			+ $('query_lang').value +
+					'&query[q]='			+ $('query_q').value +
+					'&query[since]='		+ $('query_since').value +
+					'&query[created_in]='	+ $('query_created_at').value +
+					'&query[page]=1'
+					"
+			},
+			{
+				:class => 'link r_round'
+			} %>
+	</div>
+	<div>
+		<%= f.label :rpp, "maximum results" %>
+		<%= f.text_field :rpp, {:size => 2, :class => 'text_field l_round r_round'} %>
+	</div>
+	<div>
+		<%= f.label :since, "since" %>
+		<%= f.text_field :since, { :class => 'text_field l_round r_round' } %>
+	</div>
+
+<% end %>

@@ -1,0 +1,84 @@
+<% if flash.now[:notice] %>
+<div class="notice">
+	<strong><%= flash.now[:notice] %></strong>
+</div>
+<% end %>
+
+<% if flash.now[:error] %>
+<div class="error">
+	<strong><%= flash.now[:error] %></strong>
+</div>
+<% else %>
+	<ul class="tweets">
+	<% @tweets.each do |tweet| %>
+		<li>
+			<%# tweet.inspect %>
+			<div class="picture">
+				<%= link_to image_tag(tweet['profile_image_url'], :border => 0, :size => "50x50"), parse_tweet_user(tweet['from_user']), :size => "50x50" %>
+			</div>
+			<div class="text">
+				<span>
+				<%= link_to tweet['from_user'],
+				 	'http://twitter.com/' + tweet['from_user'], :class => 'tuser' %>
+				</span>
+				<span>
+					<%= parse_tweet_text(tweet['text']) %>
+				</span>
+				<span class="tcreated_at">
+					<br /><%= parse_tweet_time(tweet['created_at'], tweet['from_user']) %>
+				</span>
+			</div>
+			<div style="clear: both;"></div>
+		
+			<!--<span class="picture">
+				<%# image_tag tweet['profile_image_url'], :size => "50x50" %>
+			</span>
+		
+				<span class="user">
+					<%# link_to tweet['from_user'],
+					 	'http://twitter.com/' + tweet['from_user'] %>
+				</span>
+				<span class="text">
+					<%# tweet['text'] %>
+				</span>-->
+		
+		</li>
+	<% end %>
+		<li>
+			<% if params[:query][:page].to_i > 1 %>
+				<%# hidden_field_tag 'previous_page', @page - 1 %>
+				<%# link_to_remote 'previous',
+				 	{
+						:update => 'results',
+						:url => { :action => 'search' },
+						:with => "
+							'query[from_user]='"	+ params[:query][:from_user] + 
+							"'&query[lang]='"		+ params[:query][:lang] +
+							"'&query[q]='"			+ params[:query][:q] +
+							"'&query[since]='"		+ params[:query][:since] +
+							"'&query[created_in]='"	+ params[:query][:created_in] +
+							"'&query[page]='"		+ params[:query][:page] - 1.to_s +
+							"'"
+					}
+				%>
+			<% end %>
+		
+			<% if params[:query][:page].to_i != @page_limit %>
+				<%# link_to_remote 'next',
+				 	{
+						:update => 'results',
+						:url => { :action => 'search' },
+						:with => "
+							'query[from_user]='"	+ params[:query][:from_user] + 
+							"'&query[lang]='"		+ params[:query][:lang] +
+							"'&query[q]='"			+ params[:query][:q] +
+							"'&query[since]='"		+ params[:query][:since] +
+							"'&query[created_in]='"	+ params[:query][:created_in] +
+							"'&query[page]='"		+ params[:query][:page] + 1.to_s +
+							"'"
+					}
+				%>
+			<% end %>
+		</li>
+	</ul>
+<% end %>

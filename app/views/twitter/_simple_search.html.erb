@@ -1,0 +1,25 @@
+<% remote_form_for @query, :url => { :action => 'search' },
+	:create => "$('spinner').show();",
+	:complete => "$('spinner').hide();" do |f| %>
+	
+	<%= f.text_field :q, { :class => 'text_field l_round simple_text_field left' } %>
+	
+	<%= hidden_field_tag 'from_search', 'simple' %>
+	<%= f.submit 'srch!', { :class => 'button r_round left' } %>
+	<div id="spinner" style="display: none;">
+		<img width="32" height="32" alt="Spinner" src="/images/ajax-loader.gif">
+	</div>
+	
+	<%= link_to_remote 'advanced',
+	 	{
+			:update => 'search',
+			:url => { :action => 'advanced_search' },
+			:success => "$('error_partial').remove();"
+		},
+		{
+			:class => 'link l_round r_round mode_link'
+		} %>
+	
+	<div style="clear: both;"></div>
+
+<% end %>

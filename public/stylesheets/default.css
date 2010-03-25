@@ -1,0 +1,321 @@
+/* General */
+* {
+	margin: 0;
+	padding: 0;
+/*	font: normal 90% Verdana,sans-serif;
+*/	font-family: Verdana;
+	font-style: normal;
+	font-size: 14px;
+}
+
+.left { float: left; }
+.right { float: right; }
+ul { list-style: none;}
+
+body {
+	float: left;
+	clear: both;
+	width: 100%;
+	color:;
+	background: url(/images/bg_page.png) repeat-x scroll 0 0 #DEEFFF;
+}
+
+h2 {
+	margin-bottom: 20px;
+	font-weight: normal;
+	text-align: right;
+}
+
+div.notice {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	color: green;
+}
+
+div.error {
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	color: red;
+}
+
+div.base {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.l_round {
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+}
+.r_round {
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-top-right-radius: 10px;	
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+div#body {
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+div#twitter_srch_logo {
+	float: left;
+	margin-left: 62px;
+	margin-top: 54px;
+}
+
+div#roundtest div {
+	margin: 0;
+	padding: 0;
+}
+
+/* Container */
+div#container {
+	
+}
+
+/* begin round */
+div#rtop {
+	background: transparent url(/images/shadow/top.png) no-repeat 0 0;
+	height: 56px;
+	width: 763px;
+}
+
+div#rbottom {
+	background: transparent url(/images/shadow/bottom.png) no-repeat 0 0;
+	height: 53px;
+	width: 763px;
+}
+
+div#rcontent {
+	width: 763px;
+	background: transparent url(/images/shadow/middle.png) repeat-y;
+}
+
+div#rcontent div {
+	padding-left: 60px;
+	padding-right: 60px;
+	padding-bottom: 20px;
+}
+/* end round */
+
+div#wrap {
+	float: left;
+	width: 632px;
+}
+
+div#wrap_header {
+	width: 650px;
+	height: 300px;
+	background: transparent url(/images/cloud_top.png) no-repeat;
+}
+
+div#wrap_content {
+	width: 590px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background: transparent url(/images/cloud_repeat.png) repeat-y;
+/*	background: #fff;
+*/
+}
+
+div#wrap_footer {
+	width: 650px;
+	height: 82px;
+	background: transparent url(/images/cloud_bottom.png) no-repeat;
+}
+
+div#sidebar {
+	float: left;
+	width: 266px;
+	margin-left: 50px;
+}
+
+div#sidebar_header {
+	width: 266px;
+	height: 294px;
+	background: transparent url(/images/sidebar-top.png) no-repeat;
+}
+
+div#sidebar_content {
+	width: 206px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background: transparent url(/images/sidebar-repeat.png) repeat-y;
+/*	background: #fff;
+*/
+}
+
+div#sidebar_footer {
+	width: 266px;
+	height: 81px;
+	background: transparent url(/images/sidebar-bottom.png) no-repeat;
+}
+
+div#search {
+	margin-bottom: 10px;
+}
+
+div#results {
+	
+}
+
+div#spinner {
+	float: left;
+	width: 32px;
+	height: 32px;
+	margin-left: 5px;
+}
+
+b.srch_latest {
+	float: right;
+	color: #11ffaa;
+}
+
+input.text_field {
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 200px;
+	height: 18px;
+	background: transparent url(/images/field-bg.png) repeat-x;
+	
+}
+
+select {
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-bottom: 10px;
+	width: 223px;
+	height: 42px;
+	background: transparent url(/images/field-bg.png) repeat-x;
+}
+
+option {
+	padding: 4px;
+	margin-left: 2px;
+	background: #fff;
+}
+
+input.text_field:focus,
+select:focus {
+	border: 1px solid #11ffaa;
+}
+
+input.simple_text_field {
+	width: 370px;
+}
+
+input.button {
+	border: 1px solid #ddd;
+	padding: 9px;
+	height: 40px;
+	background: transparent url(/images/srch-bg.png) repeat-x;
+	font-weight: bold;
+}
+
+input.button:hover {
+	background: #fff;
+	color: #ffaa11;
+	cursor: pointer;
+}
+
+a.link {
+	text-decoration: none;
+	border: 1px solid #ddd;
+	padding: 10px;
+	margin-bottom: 10px;
+/*	background: #F4A3FF;
+*/	background: transparent url(/images/mode-bg.png) repeat-x;
+	float: right;
+}
+
+a.link:hover {
+	background: #fff;
+	color: #11aaff;
+}
+
+label {
+	float: left;
+	margin-right: 20px;
+	text-align: right;
+	width: 150px;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+li:hover {
+	background-color: #f7f7f7;
+}
+
+ul.tweets li {
+	overflow: hidden;
+	width: 500px;
+	padding: 10px;
+	border-top: 1px dashed #F4A3FF;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+span.tcreated_at {
+	font-size: 10px;
+	color: #bbb;
+	float: right;
+}
+
+div.picture {
+	float: left;
+	width: 50px;
+	height: 50px;
+	padding: 5px;
+	
+}
+
+div.text {
+	float: left;
+	width: 420px;
+	padding: 5px;
+}
+
+div.text a.tuser {
+	text-decoration: none;
+	font-size: 16px;
+	color: #F4A3FF;
+}
+
+div.text a.tlink {
+	text-decoration: none;
+	color: #F4A3FF;
+}
+
+div.text a:hover {
+	text-decoration: underline;
+}
+
+ul.query li {
+	border-top: 1px dashed #F4A3FF;
+	padding-bottom: 5px;
+	overflow: hidden;
+}
+
+ul.query li:hover {
+	cursor: pointer;
+}
+
+ul.query li span {
+	width: 190px;
+	display: block;
+	font-size: 12px;
+}
+
+ul.query li span b {
+	font-size: 12px;
+	padding-right: 5px;
+}
